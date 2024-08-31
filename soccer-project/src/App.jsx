@@ -1,13 +1,10 @@
 import React from 'react'
-import Classcom from './Componant/Classcom'
-import './App.css'
+import Home from './Componant/Home'
 
 export default function App() {
   return (
     <div>
-
-    <Classcom/> 
-
+      <Home/>
     </div>
   )
 }
