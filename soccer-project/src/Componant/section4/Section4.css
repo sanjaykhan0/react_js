@@ -1,0 +1,33 @@
+.cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 10vh;
+}
+.swip{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slide{
+    border-radius: 50%;
+    border: 15px solid rgb(221, 221, 221);
+    height: 40vh;
+}
+.cen{
+    text-align: center;
+}
+
+.im{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.ply{
+    text-align: center;
+    padding: 10vh;
+}
