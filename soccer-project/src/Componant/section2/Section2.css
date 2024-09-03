@@ -1,0 +1,93 @@
+.s-2{
+    height: 80vh;
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: center;
+
+}
+
+.player{
+height: 100%;
+display: flex;
+justify-content: center;
+/* animation-timeline: view(10%); */
+}
+.matches{
+    height: 100%;
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.info-main{
+    height: 33%;
+    /* border: 1px solid; */
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+
+}
+.year{
+    height: 60%;
+    width: 100%;
+    /* border: 1px solid; */
+/* border-radius: 50%; */
+display: flex;
+align-items: center;
+}
+.info-para{
+    height: 40%;
+    width: 70%;
+    /* border: 1px solid; */
+    
+}
+#y2016{
+    height: 100%;
+    width: 20%;
+    border: 14px solid  rgb(236, 236, 236);
+border-radius: 50%;
+font-size: 30px; 
+color: rgb(196, 196, 196);
+font-weight: 700;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: 0.5s ease;
+
+
+}
+#circle{
+    height: 15px;
+    width: 15px;
+    background-color: rgb(196, 196, 196);
+    border-radius: 50%;
+    margin: 0px 30px;
+}
+.year:hover #y2016{
+    color: rgb(255, 156, 75);
+    border: 14px solid  rgb(255, 156, 75);
+
+}
+.year:hover h1{
+    color: rgb(255, 156, 75);
+
+}
+h1{
+transition: 0.5s ease;
+
+}
+#circle{
+transition: 0.5s ease;
+
+}
+.year:hover #circle{
+    background-color: rgb(255, 156, 75);
+}
+p{
+    text-align: start;
+    font-weight: 400;
+    color: rgb(168, 168, 168);
+    font-size: 15px;
+
+}

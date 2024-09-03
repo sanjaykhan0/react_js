@@ -1,5 +1,5 @@
 {
-  "name": "soccer-project",
+  "name": "usestate-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "aos": "^2.3.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "swiper": "^11.1.12"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
