@@ -24,7 +24,7 @@ export default function App() {
   }
 
 
-  // let empty= document.querySelector("input")
+ 
 
   return (
     <>
