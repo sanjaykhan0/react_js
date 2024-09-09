@@ -8,9 +8,15 @@
 
 .player{
 height: 100%;
+<<<<<<< HEAD
 display: flex;
 justify-content: center;
 /* animation-timeline: view(10%); */
+=======
+/* border: 1px solid; */
+display: flex;
+justify-content: center;
+>>>>>>> 7ccfeb4b79d1c82a06202ceacff028c3a8e52443
 }
 .matches{
     height: 100%;
