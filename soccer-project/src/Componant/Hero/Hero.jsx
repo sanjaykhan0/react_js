@@ -36,7 +36,11 @@ export default function Hero() {
             </div>
             <center>
                 <div className="soccer-player" style={soccer1}>
+<<<<<<< HEAD
+                    <img src="https://soccerclub.axiomthemes.com/wp-content/uploads/2016/04/slide_1_img_2.png" className='soccer-player-img animaZzA    ZAxaZ d animate__fadeInBottomLeft' alt="" />
+=======
                     <img src="https://soccerclub.axiomthemes.com/wp-content/uploads/2016/04/slide_1_img_2.png" className='soccer-player-img animate__animated animate__fadeInBottomLeft' alt="" />
+>>>>>>> 7ccfeb4b79d1c82a06202ceacff028c3a8e52443
                     <img src="https://soccerclub.axiomthemes.com/wp-content/uploads/2016/04/slide_1_img_1.png" className='soccer-ball-img animate__animated animate__fadeInTopRight' alt="" />
                 </div>
             </center>

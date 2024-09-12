@@ -1,0 +1,215 @@
+
+.hero-div{
+    height: 100vh;
+    width: 100%;
+    /* border: 2px solid; */
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(236, 236, 236);
+    z-index: -2;
+    
+}
+.backg{
+    position: absolute;
+    background-color: rgb(235, 235, 235);
+    height: 600px;
+    width: 600px;
+    border-radius: 50%;
+    border: 25px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    padding: 15px;
+    
+}
+.back-white{
+    background-color: rgb(247, 247, 247);
+    height: 520px;
+    width: 520px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+}
+.soccer-player{
+    /* background-color: aqua; */
+    height: 100%;
+    width: 45%;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    /* display: none; */
+    
+}
+.soccer-player-img{
+/* border: 1px solid; */
+height: 69vh;
+
+
+}
+.soccer-ball-img{
+    /* border: 1px solid; */
+    margin-top: 0px;
+    margin-top: -58%;
+    margin-left: -5%;
+    
+
+
+}
+
+.soccer-player-1{
+    /* background-color: aqua; */
+    height: 100%;
+    width: 75%;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    display: none;
+    
+    
+}
+.soccer-player-img-1{
+/* border: 1px solid; */
+margin-top: 3%;
+margin-left: 5%;
+height: 60vh;
+
+
+}
+.soccer-ball-img-1{
+    /* border: 1px solid; */
+    margin-top: -35%;
+    /* margin-top: 5%; */
+    /* margin-left: -3%; */
+    
+
+
+}
+.soccer-player-2{
+    /* background-color: aqua; */
+    height: 100%;
+    width: 75%;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    display: none;
+
+    
+    
+}
+.soccer-player-img-2{
+/* border: 1px solid; */
+height: 65vh;
+
+
+}
+
+.scor-cont{
+    position: absolute;
+    /* bottom: 0px; */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.score-bord{
+    height: 10vh;
+    width: 100%;
+    /* border: 1px solid; */
+}
+.col-one{
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.col-two{
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.col-three{
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+.axiom{
+    float: left;
+}
+.fc-dallas{
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 10px;
+    margin-top: 8%;
+    /* margin-left: 10%; */
+    text-wrap: nowrap;
+}
+.Major-League-Soccer{
+    /* margin-left: 10%; */
+    text-wrap: nowrap;
+    color: rgb(163, 163, 163);
+}
+.count{
+    height: 100px;
+    width: 100px;
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.hours{
+    height: 60%;
+    width: 49%;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 700;
+}
+.min{
+    height: 60%;
+    width: 49%;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 700;
+}
+.sec{
+    height: 60%;
+    width: 49%;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 700;
+}
+.hou{
+    /* border: 2px solid chartreuse; */
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+.score-txt{
+    font-size: 10px;
+}

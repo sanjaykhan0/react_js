@@ -1,14 +1,35 @@
+<<<<<<< HEAD
+import React,{useEffect} from 'react'
+import './Section3.css'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+
+export default function Section3() {
+    
+  useEffect(()=>{
+    AOS.init({duration:2000})
+  },[])
+=======
 import React from 'react'
 import './Section3.css'
 export default function Section3() {
+>>>>>>> 7ccfeb4b79d1c82a06202ceacff028c3a8e52443
     let img1 = 'https://soccerclub.axiomthemes.com/wp-content/uploads/2016/04/logo-2.png'
     let img2 = 'https://soccerclub.axiomthemes.com/wp-content/uploads/2016/04/logo-11-1.png'
     let img3 = 'https://soccerclub.axiomthemes.com/wp-content/uploads/2016/04/logo-2-40x40.png'
     let img4 = 'https://soccerclub.axiomthemes.com/wp-content/uploads/2016/04/logo-11-1-40x40.png'
     let img5 = 'https://soccerclub.axiomthemes.com/wp-content/uploads/2016/04/logo-9-40x40.png'
+<<<<<<< HEAD
+    
+    return (
+        <div className="back-color">
+            <div className='container sec3 ' data-aos="flip-left">
+=======
     return (
         <div className="back-color">
             <div className='container sec3'>
+>>>>>>> 7ccfeb4b79d1c82a06202ceacff028c3a8e52443
                 <center>
                     <h1>LAST MATCH RESULT</h1>
                 </center>

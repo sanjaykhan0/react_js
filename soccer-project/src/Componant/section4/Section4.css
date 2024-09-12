@@ -14,6 +14,14 @@
     border-radius: 50%;
     border: 15px solid rgb(221, 221, 221);
     height: 40vh;
+<<<<<<< HEAD
+    transition-duration: 1s;
+}
+.slide:hover{
+    transform: rotate(360deg);
+
+=======
+>>>>>>> 7ccfeb4b79d1c82a06202ceacff028c3a8e52443
 }
 .cen{
     text-align: center;
