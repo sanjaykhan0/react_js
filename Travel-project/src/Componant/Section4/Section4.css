@@ -1,0 +1,70 @@
+.section4{
+    height: 120vh;
+    /* border: 1px solid; */
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: relative;
+    /* background-color: rgb(196, 155, 155); */
+    padding-top: 20px;
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.5),rgba(0,0,0,0.5),rgba(68, 68, 68, 0.5)), url(https://websitedemos.net/tourism-04/wp-content/uploads/sites/344/2019/02/bg-04-free-img.jpg);
+    background-attachment: fixed;
+}
+
+.hero-bg-sec4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65%;
+    border-left: 1px solid rgba(0, 0, 0, 0.397);
+    border-right : 1px solid rgba(0, 0, 0, 0.397);
+
+}
+.fade-white-sec4{
+    height: 100%;
+    width: 45%;
+    /* border: 1px solid; */
+    background-color: rgba(216, 216, 216, 0.151);
+
+
+    z-index: 1;
+    border-right : 1px solid rgba(0, 0, 0, 0.089);
+
+}
+.fade-black-sec4{
+    height: 100%;
+    width: 45%;
+    /* border: 1px solid; */
+   background-color: rgba(0, 0, 0, 0.404);
+   mix-blend-mode: color-burn;
+
+    z-index: 1;
+    border: none;
+
+}
+
+
+
+
+
+@media only screen and (max-width: 1199px) {
+    
+    
+    }
+
+@media only screen and (max-width: 991px) {
+    
+   
+    }
+@media only screen and (max-width: 768px) {
+    
+  
+    
+    }
