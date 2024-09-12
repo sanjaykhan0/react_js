@@ -38,9 +38,24 @@ export default function Video() {
 
   return (
     <div>
-      <button onClick={handleplay} style={mybtn}>
-        form
-      </button>
+      
+
+
+      <button class="mybutton noSelect " type ="button" onClick={handleplay} style={mybtn}>
+        <div class="mybuttoninner">
+            <div class="mybuttoninner2">
+                <ul>
+                    <li>Start</li>
+                    <div class="mybuttoninnerline2">
+                        <div class="mybuttoninnerline"></div>
+                    </div>
+                    <li>Stop</li>
+                </ul>
+            </div>
+        </div>
+    </button>
+
+
 
       <div className="container" style={mystyle}>
         <video style={{ height: "100%", width: "100%" }} ref={videoref}>
