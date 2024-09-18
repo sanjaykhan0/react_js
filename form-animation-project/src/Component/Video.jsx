@@ -6,7 +6,7 @@ export default function Video() {
   const [mystyle, setMystyle] = useState({ display: "none" });
   const [mybtn, setBtn] = useState({ display: "block" });
   const [mystyl, setMystyl] = useState({ display: "none" });
-  const [mysty, setMysty] = useState({ display: "none" });
+  // const [mysty, setMysty] = useState({ display: "none" });
 
   const input1 = useRef();
   const input2 = useRef();
@@ -19,9 +19,9 @@ export default function Video() {
     setTimeout(() => {
       setMystyl({ display: "block" });
     }, 6000);
-    setTimeout(() => {
-      setMysty({ display: "block" });
-    }, 6200);
+    // setTimeout(() => {
+    //   setMysty({ display: "block" });
+    // }, 6200);
     setBtn({ display: "none" });
   };
 
