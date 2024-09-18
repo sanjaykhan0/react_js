@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "./Home.css";
+import Form from "./form";
 
 export default function Home() {
+
+  
+
+
   const [mobileStyle, setMobileStyle] = useState({ display: "none" });
 
   let HandleMobile = () => {
@@ -37,8 +42,64 @@ export default function Home() {
   const Handleapple = () => {
     setAppleStyle({ display: "block" });
   };
+ let url1 = 'https://m.media-amazon.com/images/I/61QRgOgBx0L._SX679_.jpg'
+ let url2='https://m.media-amazon.com/images/I/6175SlKKECL._SX679_.jpg'
+ let url3='https://m.media-amazon.com/images/I/61LB+d0vheL._SX679_.jpg'
+  const [category, setCategory] = useState()
+
+  const[onepluscolor,setOneplusColor]=useState( 'https://m.media-amazon.com/images/I/61LB+d0vheL._SX679_.jpg')
+
+  let handleoneplusgreen = ()=>{
+    setOneplusColor(url1)
+  }
+  let handleoneplussky = ()=>{
+    setOneplusColor(url2)
+  }
+  let handleoneplusgray = ()=>{
+    setOneplusColor(url3)
+  }
+
+  // realme 
+  let urlrealme1 = 'https://m.media-amazon.com/images/I/71-ZHpmFzDL._SX679_.jpg'
+  let urlrealme2 = 'https://m.media-amazon.com/images/I/71VwgEu6N6L._SX679_.jpg'
+  let urlrealme3 = 'https://m.media-amazon.com/images/I/61QRgOgBx0L._SX679_.jpg'
+
+  const [category1, setCategory1] = useState()
+
+ 
+  const [realmecolor,setrealmecolor]=useState('https://m.media-amazon.com/images/I/71-ZHpmFzDL._SX679_.jpg')
+  let handlerealmegreen = ()=>{
+    setrealmecolor(urlrealme1);
+  } 
+  let handlerealmegold = ()=>{
+    setrealmecolor(urlrealme2);
+  } 
+  // redmi 
+  let urlredmi1 = 'https://m.media-amazon.com/images/I/41gF1pn3wPL._SX300_SY300_QL70_FMwebp_.jpg'
+  let urlredmi2 = 'https://m.media-amazon.com/images/I/710bX+jrz-L._SX679_.jpg'
+  let urlredmi3 = 'https://m.media-amazon.com/images/I/71NnrsYP63L._SX679_.jpg'
+
+  const [category2, setCategory2] = useState()
+
+ 
+  const [redmicolor,setredmicolor]=useState('https://m.media-amazon.com/images/I/71-ZHpmFzDL._SX679_.jpg')
+  let handleredmigreen = ()=>{
+    setredmicolor(urlredmi1);
+  } 
+  let handleredmigold = ()=>{
+    setredmicolor(urlredmi2);
+  } 
+  let handleredmigray = ()=>{
+    setredmicolor(urlredmi3);
+  } 
+
   return (
     <>
+
+    <Form/>
+    
+
+ 
       <div className="container">
         <div className="navbar">
           <div className="logo"></div>
@@ -72,7 +133,7 @@ export default function Home() {
           width: "100%",
           backgroundColor: "gray",
           marginTop: "10px",
-          overflow:"hidden"
+          overflow: "hidden"
         }}
       >
         <img
@@ -81,6 +142,7 @@ export default function Home() {
           style={{ height: "100%" }}
         />
       </div>
+      <br />
       <div
         className="container"
         style={{
@@ -188,6 +250,7 @@ export default function Home() {
           <h4>Fashion</h4>
         </div>
       </div>
+     
       <div className="mobile" style={mobileStyle}>
         <br />
         <div className="container company">
@@ -214,7 +277,9 @@ export default function Home() {
               marginTop: "3%",
             }}
           >
-            <div className="col-6 oneplus-1"></div>
+            <div className="col-6 oneplus-1" >
+              <img src={onepluscolor} alt="" style={{height:"80%",}} />
+            </div>
 
             <div className="col-6 oneplus-2">
               <h3>
@@ -292,6 +357,23 @@ export default function Home() {
                   Buy Now
                 </button>
               </center>
+              <br />
+              <select name="" id="" onChange={(e) => setCategory(e.target.value)}>
+                <option value="select" >select</option>
+
+                <option value="color">color</option>
+                <option value="warranty">warranty</option>
+                <option value="discount">discount</option>
+              </select>
+              {
+                category == 'color' && <div style={{ display: "flex", marginTop: "10px" }}><div style={{ height: "50px", width: "50px", backgroundColor: "#D3ED87" }} onClick={handleoneplusgreen}></div><div style={{ height: "50px", width: "50px", backgroundColor: "#64D1DD" }}onClick={handleoneplussky}></div><div style={{ height: "50px", width: "50px", backgroundColor: "#242C2E" }} onClick={handleoneplusgray}></div></div>
+              }
+              {
+                category == 'warranty' && <div style={{ display: "flex", marginTop: "10px" }}><input type="text" placeholder="Enter Warranty" /></div>
+              }
+              {
+                category == 'discount' && <div style={{ display: "flex", marginTop: "10px" }}><input type="text" placeholder="Enter discount" /></div>
+              }
             </div>
           </div>
         </div>
@@ -307,7 +389,9 @@ export default function Home() {
               marginTop: "3%",
             }}
           >
-            <div className="col-6 realme-1"></div>
+            <div className="col-6 realme-1">
+            <img src={realmecolor} alt="" style={{height:"80%",}} />
+            </div>
 
             <div className="col-6 oneplus-2">
               <h3>
@@ -385,6 +469,25 @@ export default function Home() {
                   Buy Now
                 </button>
               </center>
+                  <br />
+              <select name="" id="" onChange={(e) => setCategory1(e.target.value)}>
+                <option value="select" >select</option>
+
+                <option value="color">color</option>
+                <option value="warranty">warranty</option>
+                <option value="discount">discount</option>
+              </select>
+              {
+                category1 == 'color' && <div style={{ display: "flex", marginTop: "10px" }}><div style={{ height: "50px", width: "50px", backgroundColor: "#4C5E5A" }} onClick={handlerealmegreen}></div><div style={{ height: "50px", width: "50px", backgroundColor: "#FEF7DA" }}onClick={handlerealmegold}></div><div style={{ height: "50px", width: "50px", backgroundColor: "#242C2E" }} onClick={handleoneplusgray}></div></div>
+              }
+              {
+                category1 == 'warranty' && <div style={{ display: "flex", marginTop: "10px" }}><input type="text" placeholder="Enter Warranty" /></div>
+              }
+              {
+                category1 == 'discount' && <div style={{ display: "flex", marginTop: "10px" }}><input type="text" placeholder="Enter discount" /></div>
+              }
+
+
             </div>
           </div>
         </div>
@@ -401,7 +504,10 @@ export default function Home() {
               marginTop: "3%",
             }}
           >
-            <div className="col-6 redmi-1"></div>
+            <div className="col-6 redmi-1">
+            <img src={redmicolor} alt="" style={{height:"80%",}} />
+
+            </div>
 
             <div className="col-6 oneplus-2">
               <h3>
@@ -478,6 +584,24 @@ export default function Home() {
                   Buy Now
                 </button>
               </center>
+              <br />
+              <select name="" id="" onChange={(e) => setCategory2(e.target.value)}>
+                <option value="select" >select</option>
+
+                <option value="color">color</option>
+                <option value="warranty">warranty</option>
+                <option value="discount">discount</option>
+              </select>
+              {
+                category2 == 'color' && <div style={{ display: "flex", marginTop: "10px" }}><div style={{ height: "50px", width: "50px", backgroundColor: "#A5A3C8" }} onClick={handleredmigreen}></div><div style={{ height: "50px", width: "50px", backgroundColor: "#CFB67E" }}onClick={handleredmigold}></div><div style={{ height: "50px", width: "50px", backgroundColor: "#242C2E" }} onClick={handleredmigray}></div></div>
+              }
+              {
+                category2 == 'warranty' && <div style={{ display: "flex", marginTop: "10px" }}><input type="text" placeholder="Enter Warranty" /></div>
+              }
+              {
+                category2 == 'discount' && <div style={{ display: "flex", marginTop: "10px" }}><input type="text" placeholder="Enter discount" /></div>
+              }
+
             </div>
           </div>
         </div>
@@ -596,7 +720,7 @@ export default function Home() {
 
             <div className="col-6 oneplus-2">
               <h3>
-              Apple iPhone 16 Pro (1 TB) - Black Titanium
+                Apple iPhone 16 Pro (1 TB) - Black Titanium
               </h3>
               <font style={{ color: "green", fontSize: "12px" }}>
                 Visit the OnePlus Store
