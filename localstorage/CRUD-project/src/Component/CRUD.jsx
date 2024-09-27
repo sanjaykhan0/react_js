@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // create 
 import React, { useEffect, useState } from 'react'
 
@@ -17,10 +18,12 @@ export default function CRUD() {
 
     let handleclick = ()=>{
       
-      let newStudent = {id:data.length+1,name:name,sub:sub}
+      let newStudent = {id:Date.now(),name:name,sub:sub}
       let storeData = JSON.parse(localStorage.getItem("student"))||[]
       if(index){
-         let updataData = storeData.find((e)=>e.id == index)
+         let updataData = data.find((e)=>e.id == index)
+         console.log(updataData);
+         
          updataData.id = index
          updataData.name = name
          updataData.sub = sub
@@ -50,7 +53,7 @@ export default function CRUD() {
     let storeData = JSON.parse(localStorage.getItem("student"))||[]
     let editdata = storeData.find((e)=> e.id == id)
     console.log(editdata)
-    setIndex(editdata)
+    setIndex(id)
     setName(editdata.name)
     setSub(editdata.sub)
 
