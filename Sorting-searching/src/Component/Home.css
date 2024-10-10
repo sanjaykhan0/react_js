@@ -1,3 +1,46 @@
+/* Center container styling */
+.product-page {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* Styling for the title */
+.product-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #3949ab;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Styling for the select dropdown */
+.category-select {
+  width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #3949ab;
+  background-color: #e3f2fd;
+  color: #3949ab;
+  font-family: 'Arial', sans-serif;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* Hover effect for select dropdown */
+.category-select:hover {
+  background-color: #c5cae9;
+  border-color: #283593;
+}
+
+/* Focus effect for the select dropdown */
+.category-select:focus {
+  border-color: #283593;
+  box-shadow: 0 0 10px rgba(41, 121, 255, 0.3);
+}
+
 /* Product Card Container */
 .product {
     display: flex;
