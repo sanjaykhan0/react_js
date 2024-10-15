@@ -6,11 +6,9 @@ import { store } from './app/Store'
 export default function App() {
   return (
     <div>
-      <Provider>
-      <Home store={store} />
+      <Provider store={store}>
+        <Home />
       </Provider>
-
-      
     </div>
   )
 }

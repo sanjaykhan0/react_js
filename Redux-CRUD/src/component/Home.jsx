@@ -1,52 +1,68 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { addData, deleteData, EditData } from "../feature/CrudSlice";
 
 export default function Home() {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [Index,setIndex] = useState("")
 
-  const data = useSelector((state) => {
-    return state.crud.data;
-  });
 
+  const data = useSelector((state) =>{
+    return state.crudSlice});
   const dispatch = useDispatch();
 
   let handlesubmit = () => {
-    console.log(name, email);
-    dispatch(addrec({ id: Date.now(), name, email }));
+    if(Index){
+      dispatch(EditData({id:Index,name,age}))
+      setIndex(null)
+    }
+    else{
+      dispatch(addData({ id: Date.now(), name, age }));
+    }
     setName("");
-    setEmail("");
+    setAge("");
   };
-  let handledel = () => {
+  let handledel = (id)=>{
+    dispatch(deleteData(id))
+  }
+  let handleEdit = (id)=>{
+    setIndex(id)
+    // dispatch(EditData({id:Index,name,age}))
+    let findData = data.student.find((e)=>e.id == id)
+    setName(findData.name)
+    setAge(findData.age)
 
-  };
+  }
 
   return (
     <div>
       <input
         type="text"
         placeholder="Enter your name"
+        value={name}
         onChange={(e) => setName(e.target.value)}
       />
 
       <input
         type="text"
-        placeholder="Enter your email"
-        onChange={(e) => setEmail(e.target.value)}
+        value={age}
+        placeholder="Enter your age"
+        onChange={(e) => setAge(e.target.value)}
       />
 
-      <button onClick={handlesubmit}>Submit</button>
+      <button onClick={handlesubmit}>{Index?"Update Data" : "Add Data"}</button>
 
       {data &&
-        data.data.map((e, i) => {
+        data.student.map((e,i) => {
           return (
             <ul key={i}>
               <li>{e.id}</li>
               <li>{e.name}</li>
-              <li>{e.email}</li>
+              <li>{e.age}</li>
               <li>
-                <button>edit</button>
+                <button onClick={()=>handleEdit(e.id)}>edit</button>
                 <br />
                 <button onClick={()=>handledel(e.id)}>delete</button>
               </li>
