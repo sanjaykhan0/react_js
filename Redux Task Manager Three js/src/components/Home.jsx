@@ -13,13 +13,15 @@ export default function Home() {
 
     const tableStyles = {
         width: "100%",
-        borderCollapse: "collapse", // Ensures the borders are merged
+        borderCollapse: "collapse", 
+        backgroundColor:"white",
+        padding:"20px"
       };
     
       const thTdStyles = {
-        border: "1px solid black", // Border for table cells
-        padding: "10px",           // Padding inside cells
-        textAlign: "left",         // Align text to the left
+        border: "1px solid black", 
+        padding: "10px",          
+        textAlign: "left",         
       };
     
       const actionButtonStyles = {
@@ -53,7 +55,7 @@ export default function Home() {
 
 
       return (
-        <div>
+        <div style={{backgroundColor:"white",padding:"20px",width:"600px",marginLeft:"-100px"} }>
           <table style={tableStyles}>
             <thead>
               <tr>
@@ -70,7 +72,7 @@ export default function Home() {
               {data &&
                 data.taskData.map((e, i) => (
                   <tr key={i}>
-                    <td style={thTdStyles}>{e.id}</td>
+                    <td style={thTdStyles}>{e.id}</td>  
                     <td style={thTdStyles}>{e.enterTask}</td>
                     <td style={thTdStyles}>{e.name}</td>
                     <td style={thTdStyles}>{e.age}</td>
