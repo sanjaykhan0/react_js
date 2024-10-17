@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./Form"
 import { useDispatch, useSelector } from 'react-redux';
-import { addData } from '../Feature/TaskSlice';
+import { addData, handleGender, setAge, setEnterTask, setName, setPriority, updateData } from '../Feature/TaskSlice';
 
 export default function Form() {
   const formStyles = {
@@ -30,53 +30,40 @@ export default function Form() {
       backgroundColor: '#45a049',
     },
   };
-  const [name,setName] = useState('')
-  const [age,setAge] = useState('')
-  const [enterTask,setEnterTask] = useState('')
-  const [gender,setGender]= useState('')
-  const [priority,setPriority] = useState('')
-  
-  const data = useSelector((state)=>{
+
+  const data = useSelector((state) => {
     return state.taskslice
   })
   const dispatch = useDispatch()
-
-  let handleGender = ()=>{
-    if(gender == "male"){
-      setGender("Male")
+  let handleclick = () => {
+    if (data.editId > 0) {
+      dispatch(updateData({ id: data.editId, enterTask: data.enterTask, name: data.name, age: data.age, gender: data.gender, priority: data.priority }))
+    } else {
+      dispatch(addData({ id: Date.now(), enterTask: data.enterTask, name: data.name, age: data.age, gender: data.gender, priority: data.priority }))
     }
-    else{
-      setGender("Female")
-    }
-
-  }
-
-  let handleclick = ()=>{
-    dispatch(addData({id:Date.now(),enterTask,name,age,gender,priority}))
-    setEnterTask('')
-    setName('')
-    setAge('')
-    setGender('')
-    setPriority('')
-    
+    dispatch(setEnterTask(''))
+    dispatch(setName(''))
+    dispatch(setAge(''))
+    dispatch(handleGender('male'))
+    dispatch(setPriority('high'))
   }
 
 
 
   return (
     <div>
-      <input value={enterTask} type="text" placeholder="Enter your task" style={formStyles.input} onChange={(e)=>setEnterTask(e.target.value)} />
-      <input value={name} type="text" placeholder="Enter your name" style={formStyles.input}  onChange={(e)=>setName(e.target.value)}  />
-      <input value={age} type="text" placeholder="Enter your age" style={formStyles.input}  onChange={(e)=>setAge(e.target.value)}  />
+      <input value={data.enterTask} type="text" placeholder="Enter your task" style={formStyles.input} onChange={(e) => dispatch(setEnterTask(e.target.value))} />
+      <input value={data.name} type="text" placeholder="Enter your name" style={formStyles.input} onChange={(e) => dispatch(setName(e.target.value))} />
+      <input value={data.age} type="text" placeholder="Enter your age" style={formStyles.input} onChange={(e) => dispatch(setAge(e.target.value))} />
       <br />
       <span style={formStyles.span}>
-        Male : <input type="radio" value={gender}  name="gender" style={formStyles.radio} onClick={handleGender} />
+        Male : <input type="radio" checked={data.gender === "male"} value="male" name="gender" style={formStyles.radio} onChange={() => dispatch(handleGender('male'))} />
       </span>
       <span style={formStyles.span}>
-        Female : <input type="radio" value={gender} name="gender" style={formStyles.radio} onClick={handleGender} />
+        Female : <input type="radio" checked={data.gender === "female"} value="female" name="gender" style={formStyles.radio} onChange={() => dispatch(handleGender('female'))} />
       </span>
       <br />
-      <select style={formStyles.input} value={priority} onChange={(e)=>setPriority(e.target.value)}>
+      <select style={formStyles.input} value={data.priority} onChange={(e) => dispatch(setPriority(e.target.value))}>
         <option value="high">High</option>
         <option value="medium">Medium</option>
         <option value="low">Low</option>
@@ -86,3 +73,4 @@ export default function Form() {
     </div>
   );
 };
+
