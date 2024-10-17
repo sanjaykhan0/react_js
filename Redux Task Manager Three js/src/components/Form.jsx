@@ -39,7 +39,7 @@ export default function Form() {
     if (data.editId > 0) {
       dispatch(updateData({ id: data.editId, enterTask: data.enterTask, name: data.name, age: data.age, gender: data.gender, priority: data.priority }))
     } else {
-      dispatch(addData({ id: Date.now(), enterTask: data.enterTask, name: data.name, age: data.age, gender: data.gender, priority: data.priority }))
+      dispatch(addData({ id:data.taskData.length +1 , enterTask: data.enterTask, name: data.name, age: data.age, gender: data.gender, priority: data.priority }))
     }
     dispatch(setEnterTask(''))
     dispatch(setName(''))
@@ -51,7 +51,7 @@ export default function Form() {
 
 
   return (
-    <div>
+    <div style={{borderRadius:"10px", backgroundColor:"white" , padding:"15px"}}>
       <input value={data.enterTask} type="text" placeholder="Enter your task" style={formStyles.input} onChange={(e) => dispatch(setEnterTask(e.target.value))} />
       <input value={data.name} type="text" placeholder="Enter your name" style={formStyles.input} onChange={(e) => dispatch(setName(e.target.value))} />
       <input value={data.age} type="text" placeholder="Enter your age" style={formStyles.input} onChange={(e) => dispatch(setAge(e.target.value))} />
