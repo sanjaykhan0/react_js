@@ -1,0 +1,89 @@
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteData, updateData } from '../Feature/TaskSlice'
+
+export default function Home() {
+
+    const [editId,setEditId] = useState('')
+
+    const dispatch = useDispatch()
+    
+    const data = useSelector((state)=>{
+        return state.taskslice
+    })
+
+    const tableStyles = {
+        width: "100%",
+        borderCollapse: "collapse", // Ensures the borders are merged
+      };
+    
+      const thTdStyles = {
+        border: "1px solid black", // Border for table cells
+        padding: "10px",           // Padding inside cells
+        textAlign: "left",         // Align text to the left
+      };
+    
+      const actionButtonStyles = {
+        padding: "5px 10px",
+        marginRight: "5px",
+        cursor: "pointer",
+        backgroundColor: "#4CAF50",
+        color: "white",
+        border: "none",
+        borderRadius: "4px",
+      };
+    
+      const deleteButtonStyles = {
+        ...actionButtonStyles,
+        backgroundColor: "red",  // Different color for the delete button
+      };
+    
+      let handleDelete = (id)=>{
+        dispatch(deleteData(id))
+
+      }
+
+      let handleEdit = (id) => {
+        let data = data.taskData.find((e) => e.id == id )
+        data.taskData.enterTask(data.enterTask)
+
+
+        
+      }
+
+
+      return (
+        <div>
+          <table style={tableStyles}>
+            <thead>
+              <tr>
+                <th style={thTdStyles}>Id</th>
+                <th style={thTdStyles}>Task</th>
+                <th style={thTdStyles}>Name</th>
+                <th style={thTdStyles}>Age</th>
+                <th style={thTdStyles}>Gender</th>
+                <th style={thTdStyles}>Priority</th>
+                <th style={thTdStyles} colSpan={2}>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data &&
+                data.taskData.map((e, i) => (
+                  <tr key={i}>
+                    <td style={thTdStyles}>{e.id}</td>
+                    <td style={thTdStyles}>{e.enterTask}</td>
+                    <td style={thTdStyles}>{e.name}</td>
+                    <td style={thTdStyles}>{e.age}</td>
+                    <td style={thTdStyles}>{e.gender}</td>
+                    <td style={thTdStyles}>{e.priority}</td>
+                    <td style={thTdStyles}>
+                      <button style={actionButtonStyles}  onClick={()=>handleEdit(e.id)}>Edit</button>
+                      <button style={deleteButtonStyles} onClick={()=>handleDelete(e.id)}>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+  )
+}
