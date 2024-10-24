@@ -1,11 +1,10 @@
+
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteData, updateData } from '../Feature/TaskSlice'
+import { deleteData, handleGender, setAge, setEditId, setEnterTask, setName, setPriority, updateData } from '../Feature/TaskSlice'
+// import { log } from 'three/webgpu'
 
 export default function Home() {
-
-    const [editId,setEditId] = useState('')
-
     const dispatch = useDispatch()
     
     const data = useSelector((state)=>{
@@ -14,13 +13,15 @@ export default function Home() {
 
     const tableStyles = {
         width: "100%",
-        borderCollapse: "collapse", // Ensures the borders are merged
+        borderCollapse: "collapse", 
+        backgroundColor:"white",
+        padding:"20px"
       };
     
       const thTdStyles = {
-        border: "1px solid black", // Border for table cells
-        padding: "10px",           // Padding inside cells
-        textAlign: "left",         // Align text to the left
+        border: "1px solid black", 
+        padding: "10px",          
+        textAlign: "left",         
       };
     
       const actionButtonStyles = {
@@ -35,7 +36,7 @@ export default function Home() {
     
       const deleteButtonStyles = {
         ...actionButtonStyles,
-        backgroundColor: "red",  // Different color for the delete button
+        backgroundColor: "red",  
       };
     
       let handleDelete = (id)=>{
@@ -43,17 +44,18 @@ export default function Home() {
 
       }
 
-      let handleEdit = (id) => {
-        let data = data.taskData.find((e) => e.id == id )
-        data.taskData.enterTask(data.enterTask)
-
-
-        
+      let handleEdit = (data) => {
+        dispatch(setEditId(data.id))
+        dispatch(setEnterTask(data.enterTask))
+        dispatch(setName(data.name))
+        dispatch(setAge(data.age))
+        dispatch(handleGender(data.gender))
+        dispatch(setPriority(data.priority))
       }
 
 
       return (
-        <div>
+        <div style={{backgroundColor:"white",padding:"20px",width:"600px",marginLeft:"-100px"} }>
           <table style={tableStyles}>
             <thead>
               <tr>
@@ -70,14 +72,14 @@ export default function Home() {
               {data &&
                 data.taskData.map((e, i) => (
                   <tr key={i}>
-                    <td style={thTdStyles}>{e.id}</td>
+                    <td style={thTdStyles}>{e.id}</td>  
                     <td style={thTdStyles}>{e.enterTask}</td>
                     <td style={thTdStyles}>{e.name}</td>
                     <td style={thTdStyles}>{e.age}</td>
                     <td style={thTdStyles}>{e.gender}</td>
                     <td style={thTdStyles}>{e.priority}</td>
                     <td style={thTdStyles}>
-                      <button style={actionButtonStyles}  onClick={()=>handleEdit(e.id)}>Edit</button>
+                      <button style={actionButtonStyles}  onClick={()=>handleEdit(e)}>Edit</button>
                       <button style={deleteButtonStyles} onClick={()=>handleDelete(e.id)}>Delete</button>
                     </td>
                   </tr>
@@ -87,3 +89,4 @@ export default function Home() {
         </div>
   )
 }
+

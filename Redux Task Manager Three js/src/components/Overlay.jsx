@@ -2,20 +2,24 @@ import { Scroll, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useState } from "react";
 import Form from "./Form";
+import { Provider } from "react-redux";
+import { store } from "../App/Store";
+import Home from "./Home";
+import "../App.css"
 
 const Section = (props) => {
   return (
     <section
-      className={`h-screen flex flex-col justify-center p-10 ${
+      className={`h-screen w-100 flex flex-col justify-center p-10 ${
         props.right ? "items-end" : "items-start"
       }`}
       style={{
         opacity: props.opacity,
       }}
     >
-      <div className="w-1/2 flex items-center justify-center">
-        <div className="max-w-sm w-full">
-          <div className="bg-white  rounded-lg px-8 py-12">
+      <div className="w-1/2 flex items-center justify-center sect-2" >
+        <div className="max-w-sm w-screen" >
+          <div className="  rounded-lg px-5 py-12 ">
             {props.children}
           </div>
         </div>
@@ -38,34 +42,16 @@ export const Overlay = () => {
 
   return (
     <Scroll html>
-      <div class="w-screen">
+      <div className="w-screen">
         <Section opacity={opacityFirstSection}>
-         <Form/>
+          <Provider store={store}>
+            <Form />
+          </Provider>
         </Section>
-        <Section right opacity={opacitySecondSection}>
-          <h1 className="font-semibold font-serif text-2xl">
-            Here are my skillsets 🔥
-          </h1>
-          <p className="text-gray-500">PS: I never test</p>
-          <p className="mt-3">
-            <b>Frontend 🚀</b>
-          </p>
-          <ul className="leading-9">
-            <li>ReactJS</li>
-            <li>React Native</li>
-            <li>VueJS</li>
-            <li>Tailwind</li>
-          </ul>
-          <p className="mt-3">
-            <b>Backend 🔬</b>
-          </p>
-          <ul className="leading-9">
-            <li>NodeJS</li>
-            <li>tRPC</li>
-            <li>NestJS</li>
-            <li>PostgreSQL</li>
-          </ul>
-          <p className="animate-bounce  mt-6">↓</p>
+        <Section right opacity={opacitySecondSection} className="w-100" >
+         <Provider store={store}>
+          <Home/>
+         </Provider>
         </Section>
         <Section opacity={opacityLastSection}>
           <h1 className="font-semibold font-serif text-2xl">
