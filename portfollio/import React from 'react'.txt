@@ -1,0 +1,76 @@
+import React from 'react'
+import '../App.css'
+export default function Portfollio() {
+    const canvas = document.querySelector("canvas")
+    const context = canvas.getContext("2d") // kuchh bhi (drwa/add image) you need context
+
+    let fram ={
+        currentIndex : 0,
+        maxIndex : 382
+
+    }
+
+    let imageloaded = 0
+    let allImage = []
+
+    function preloadImage(){
+        for(let i = 1 ; i<= fram.maxIndex ; i++){
+            const ImageURL = `./frame/frame_${i.toString().padStart(4,"0")}.jpeg`
+            // console.log(ImageURL);
+            const img = new Image();
+            img.src = ImageURL
+            // console.log(img);
+            img.onload = () => {
+                imageloaded++;
+                if(imageloaded === fram.maxIndex){
+                    // console.log('all image loaded');
+                    loadImage(fram.currentIndex)
+                    
+                }
+            }
+            allImage.push(img)
+        }
+        // console.log(allImage)
+    }
+
+    function loadImage(index){
+        if(index>=0 && index<=fram.maxIndex){
+            const img  = allImage[index]
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight
+
+            const scaleX = canvas.width/img.width
+            const scaleY = canvas.height/img.height
+            const scale = Math.max(scaleX,scaleY)
+
+            const newWidth = img.width * scale
+            const newHeight = img.height * scale
+
+            const offsetX = (canvas.width - newWidth)/2 //image center to X axis
+            const offsetY = (canvas.height - newHeight)/2 // image center to Y axis
+
+            context.clearRect(0,0, canvas.width, canvas.height);//sab kuchh clear ho gaya canvas per se vo blank hai
+            context.imageSmoothingEnabled = true
+            context.imageSmoothingQuality = "high"
+            context.drawImage(img, offsetX, offsetY, newWidth, newHeight) // img draw karo X axis se center or Y axis se center
+            fram.currentIndex = index // jo img dekh rahi hai uski index hai
+        }
+    }
+
+    preloadImage()
+
+  return (
+    <div>
+      <h1>hello</h1>
+      <div className="w-full  bg-zinc-900">
+        <div className="parent realtive top-0 left-0 w-full h-[700vh] bg-zinc-800">
+            <div className="w-full sticky top-0 left-0 h-screen">
+                <canvas className='w-full h-screen' id="frame">
+                    
+                </canvas>
+            </div>
+        </div>
+      </div>
+    </div>
+  )
+}
