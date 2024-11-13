@@ -11,33 +11,31 @@ export default function Portfolio() {
         currentIndex: 0,
         maxIndex: 382
     };
+    let imageLoaded = 0;
+    const allImages = [];
 
-    let imageloaded = 0;
-    let allImage = [];
-
-    function preloadImage() {
+    const preloadImages = () => {
         for (let i = 1; i <= frame.maxIndex; i++) {
-            const ImageURL = `./frame/frame_${i.toString().padStart(4, "0")}.jpeg`;
+            const imageURL = `./frame/frame_${i.toString().padStart(4, "0")}.jpeg`;
             const img = new Image();
-            img.src = ImageURL;
+            img.src = imageURL;
             img.onload = () => {
-                imageloaded++;
-                if (imageloaded === frame.maxIndex) {
+                imageLoaded++;
+                if (imageLoaded === frame.maxIndex) {
                     loadImage(frame.currentIndex);
                     startAnimation(); // Start animation after all images are loaded
                 }
             };
-            allImage.push(img);
+            allImages.push(img);
         }
-    }
+    };
 
-    function loadImage(index) {
-        const canvas = canvasRef.current;
-        if (!canvas) return;  // Ensure canvas is defined
-        const context = canvas.getContext("2d");
+    const loadImage = (index) => {
+        if (canvasRef.current && index >= 0 && index <= frame.maxIndex) {
+            const canvas = canvasRef.current;
+            const context = canvas.getContext("2d");
+            const img = allImages[index];
 
-        if (index >= 0 && index <= frame.maxIndex && allImage[index]) {
-            const img = allImage[index];
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
@@ -56,34 +54,38 @@ export default function Portfolio() {
             context.drawImage(img, offsetX, offsetY, newWidth, newHeight);
             frame.currentIndex = index;
         }
-    }
+    };
 
-    function startAnimation() {
+    const startAnimation = () => {
+        console.log("Starting animation");
         gsap.timeline({
             scrollTrigger: {
-                trigger: ".parent",
+                trigger: ".hov", // Ensure this matches the correct class
                 start: "top top",
+                end: "bottom bottom",
                 scrub: 2,
-                markers: true 
+                markers: true,
             }
         }).to(frame, {
             currentIndex: frame.maxIndex,
+            ease: "none",
             onUpdate: function () {
                 loadImage(Math.floor(frame.currentIndex));
             }
         });
-    }
+    };
 
     useEffect(() => {
-        preloadImage();
+        preloadImages();
     }, []);
 
     return (
         <div>
+            <h1>Hello</h1>
             <div className="w-full bg-zinc-900">
-                <div className="parent relative top-0 left-0 w-full h-[700vh] bg-zinc-800">
+                <div className="parent hov relative top-0 left-0 w-full h-[700vh] bg-zinc-800">
                     <div className="w-full sticky top-0 left-0 h-screen">
-                        <canvas ref={canvasRef} className='w-full h-screen' id="frame"></canvas>
+                        <canvas ref={canvasRef} className="w-full h-screen" id="frame"></canvas>
                     </div>
                 </div>
             </div>
