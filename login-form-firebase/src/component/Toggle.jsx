@@ -32,7 +32,8 @@ function Toggle() {
         borderRadius: '150px 0 0 100px',
         zIndex: 1000,
       });
-      setButtons("Sing In")
+      setButtons("Sign In")
+
     } else {
       setTogStyle({
         position: 'absolute',
@@ -51,23 +52,15 @@ function Toggle() {
   };
   const [buttons, setButtons] = useState("Sign Up");
 
-
-
-
-
   return (
     <div className="container">
       <div className="toggle-container" style={togStyle}>
         <div className="toggle">
-          {/* <div className="toggle-panel toggle-left">
-            <h1>Welcome Back!</h1>
-            <p>Enter your personal details to use all of site features</p>
-            <button className="hidden" id="login" onClick={handlesignup}>{buttons}</button>
-          </div> */}
+        
           <div className="toggle-panel toggle-right">
             <h1>Hello, Friend!</h1>
             <p>Register with your personal details to use all of site features</p>
-            <button className="hidden" id="register" onClick={handlesignup}>{buttons}</button>
+            <button className="hidden" id="register" onClick={()=>handlesignup()}>{buttons}</button>
           </div>
         </div>
       </div>
@@ -78,5 +71,3 @@ function Toggle() {
 }
 
 export default Toggle;
-
-
