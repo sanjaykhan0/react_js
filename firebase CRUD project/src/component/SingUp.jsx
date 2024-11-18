@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../Fireconfig';
+import { auth, db } from '../../Fireconfig';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
