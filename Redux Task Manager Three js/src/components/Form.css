@@ -1,0 +1,25 @@
+input {
+    margin: 10px 0; /* Removed quotes */
+   padding: 10px; /* Removed quotes */
+   border: 1px solid #ccc; /* Removed quotes */
+   border-radius: 4px; /* Changed to kebab-case */
+   width: 100%; /* Removed quotes */
+  }
+       radio {
+         margin: '0 5px';
+       }
+       span {
+         margin-right: '10px';
+       }
+       button {
+         background-color: '#4CAF50';
+         color: 'white';
+         border: 'none';
+         padding: '10px 20px';
+         cursor: 'pointer';
+         font-size: '16px';
+       }
+       buttonHover {
+         background-color: '#45a049';
+       }
+    
