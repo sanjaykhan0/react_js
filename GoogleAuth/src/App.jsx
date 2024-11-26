@@ -1,4 +1,5 @@
 import { useState } from 'react'
+<<<<<<< HEAD
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -28,6 +29,27 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+=======
+
+import './App.css'
+import Signin from './Components/Signin'
+import { BrowserRouter, Routes,Route } from 'react-router-dom'
+import Dashboard from './Components/Dashboard'
+
+function App() {
+
+
+  return (
+    <>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Signin />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+    
+
+    </Routes>
+    </BrowserRouter>
+>>>>>>> 01c4b81b7c89dd4ff22990000e6e4e15067f3c3f
     </>
   )
 }
