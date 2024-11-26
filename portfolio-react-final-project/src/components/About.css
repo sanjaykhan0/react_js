@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Waiting for the Sunrise", cursive;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  section,
+  .container {
+    display: grid;
+    place-items: center;
+  }
+  
+  section {
+    min-height: 50vh;
+    /* background-color: #161a1e; */
+  }
+  
+  .container {
+    border-radius: 0.7em;
+    perspective: 800px;
+    transform: rotateZ(-2deg);
+    transform-property: preserve-3d;
+    transition: transform 250ms ease;
+  }
+  
+  .container:has(.card:hover) {
+    transform: rotateZ(0deg) scale(1.1);
+  }
+  
+
+  .card {
+    padding: 1rem;
+    background-color: #151131;
+    border-radius: 0.7em;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+    overflow: hidden;
+    border: 10px solid rgba(red, green, blue, alpha);
+  }
+  
+  .card_thumbnail {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 0.7em;
+    overflow: hidden;
+  }
+  
+  .card_thumbnail img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 380px;
+    max-height: 100%;
+  }
+  
+  .card_thumbmail_shadow {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .card_caption {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .card:hover .glare {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+  }
+  
+  .glare {
+    position: absolute;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0) 50%
+    );
+    top: 0;
+    left: 0;
+    width: 1000px;
+    height: 1000px;
+    border-radius: 50%;
+    opacity: 1;
+    mix-blend-mode: overlay;
+    transition: opacity 150ms ease-in;
+  }
+  .card-content{
+    display: flex; justify-content: center;
+    
+  }
