@@ -1,11 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import '../App.css';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger'; // Import ScrollTrigger
+
+// gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Portfolio() {
+  const parentRef = useRef()
     const canvasRef = useRef(null);
     const frame = {
         currentIndex: 0,
@@ -23,7 +27,24 @@ export default function Portfolio() {
                 imageLoaded++;
                 if (imageLoaded === frame.maxIndex) {
                     loadImage(frame.currentIndex);
-                    startAnimation(); // Start animation after all images are loaded
+                    // startAnimation();
+                    useEffect(()=>{
+                      const el = parentRef.current
+                      gsap.to(frame, {
+                        // currentIndex: frame.maxIndex,
+                        // ease: "none",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top top",
+                            end: "bottom top",
+                            scrub: 2,
+                            markers: true,
+                            onUpdate: () => {
+                                loadImage(Math.floor(frame.currentIndex));
+                            }
+                        }
+                    });
+                    })
                 }
             };
             allImages.push(img);
@@ -57,22 +78,7 @@ export default function Portfolio() {
     };
 
     const startAnimation = () => {
-        console.log("Starting animation");
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: ".hov", // Ensure this matches the correct class
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 2,
-                markers: true,
-            }
-        }).to(frame, {
-            currentIndex: frame.maxIndex,
-            ease: "none",
-            onUpdate: function () {
-                loadImage(Math.floor(frame.currentIndex));
-            }
-        });
+       
     };
 
     useEffect(() => {
@@ -83,7 +89,7 @@ export default function Portfolio() {
         <div>
             <h1>Hello</h1>
             <div className="w-full bg-zinc-900">
-                <div className="parent hov relative top-0 left-0 w-full h-[700vh] bg-zinc-800">
+                <div className="parent relative top-0 left-0 w-full h-[700vh] bg-zinc-800" ref={parentRef}>
                     <div className="w-full sticky top-0 left-0 h-screen">
                         <canvas ref={canvasRef} className="w-full h-screen" id="frame"></canvas>
                     </div>
