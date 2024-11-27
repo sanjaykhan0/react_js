@@ -1,5 +1,7 @@
 import React from "react";
 import { ComputersCanvas } from "./canvas";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function Hero() {
   const styles = {
@@ -29,7 +31,7 @@ export default function Hero() {
           <div className="w-5 h-5 rounded-full bg-[#915eff]" ></div>
           <div className="w-1 sm:h-80 h-40 violet-gradient" ></div>
         </div>
-        <div>
+        <div data-aos="fade-right">
             <h1 className={`${styles.heroHeadText}text-white`}>
               Hi I'm <span className="text-[#915eff]">{name}</span>
             </h1>

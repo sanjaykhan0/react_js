@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
-import Experience from './components/Experience'
+
 import Tech from './components/Tech'
 import Works from './components/Works'
 import Feedbacks from './components/Feedbacks'
@@ -20,9 +20,9 @@ export default function App() {
           <Hero/>
         </div>
         <About/>
-        <Experience/>
-        <Tech/>
         <Works/>
+        
+        <Tech/>
         <Feedbacks/>
         <div className='relative z-0'>
           <Contact/>

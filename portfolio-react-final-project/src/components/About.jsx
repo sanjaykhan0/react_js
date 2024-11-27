@@ -1,6 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import "./About.css";
-import { web } from "../assets";
+import webImage from "../assets/web.png";
+import mobile from "../assets/mobile.png";
+import backend from "../assets/backend.png";
+import creator from "../assets/creator.png";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function About() {
   const styles = {
@@ -27,24 +32,26 @@ export default function About() {
     const card = cardRef.current;
     const glare = glareRef.current;
 
-    card.onmouseenter = (e) =>
-      (cachedCardDomRect = e.target.getBoundingClientRect());
+    const handleMouseEnter = (e) => {
+      cachedCardDomRect = e.target.getBoundingClientRect();
+    };
 
-    card.onmouseleave = (e) => {
+    const handleMouseLeave = () => {
       card.animate(
         { transform: "rotateX(0deg) rotateY(0deg)" },
         { duration: 250, fill: "forwards", delay: 50 }
       );
     };
 
-    card.onmousemove = (e) => {
+    const handleMouseMove = (e) => {
       if (!cachedCardDomRect) return;
 
-      let xCoord = e.clientX - cachedCardDomRect.left;
-      let yCoord = e.clientY - cachedCardDomRect.top;
-      let xDegreesToRotate =
+      const xCoord = e.clientX - cachedCardDomRect.left;
+      const yCoord = e.clientY - cachedCardDomRect.top;
+
+      const xDegreesToRotate =
         (20 - 20 * (yCoord / cachedCardDomRect.height)) * -1;
-      let yDegreesToRotate = 20 - 40 * (xCoord / cachedCardDomRect.width);
+      const yDegreesToRotate = 20 - 40 * (xCoord / cachedCardDomRect.width);
 
       card.animate(
         {
@@ -62,17 +69,27 @@ export default function About() {
         { duration: 0, fill: "forwards" }
       );
     };
+
+    card.addEventListener("mouseenter", handleMouseEnter);
+    card.addEventListener("mouseleave", handleMouseLeave);
+    card.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      card.removeEventListener("mouseenter", handleMouseEnter);
+      card.removeEventListener("mouseleave", handleMouseLeave);
+      card.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   return (
-    <div>
+    <div className="xl:px-60 px-20">
       <div
-        className={`intro px-52 w-full flex flex-col items-start py-5 bg-primary mt-20 `}
+        className={`intro  w-full flex flex-col items-start py-5 bg-primary mt-20 `} data-aos="fade-right"
       >
         <font className="text-secondary">introduction</font>
         <h1 className="text-white text-[40px] font-bold">Overview</h1>
         <br />
-        <p className="w-2/4 text-secondary ">
+        <p className="w-2/3 text-secondary ">
           As a Full Stack Developer, I create responsive web applications using
           React.js for front-end and add more functionality like a
           GSAP,Lenis,Framework etc. and Node.js, Express, MongoDB for back-end
@@ -81,23 +98,95 @@ export default function About() {
         </p>
       </div>
 
-      {/* card  */}
-      <div className="">
-        <section>
-          <div className="container">
-            
-              <div ref={cardRef} className="card border"  style={{  padding:"50px 0px "}}>
-                <div className="card_thumbnail" >
-                  <img src={web} style={{ height: "70px", }} />
-                  <div className="card_thumbmail_shadow"></div>
-                </div>
-                <p className="card_caption font-[10px]" style={{  padding:"0px 10px ",boxSizing:"border-box"}}>Web Developer </p>
-                <div ref={glareRef} className="glare"></div>
-              </div>
-            
+      {/* card */}
+     <div className="main-3d flex justify-start gap-16 flex-wrap ">
+     <div ref={cardRef} className="tilt" data-aos="zoom-in">
+        <div className="container">
+          <div className="tilt-box-wrap">
+            {Array(9)
+              .fill(0)
+              .map((_, idx) => (
+                <span key={idx} className="t_over"></span>
+              ))}
+
+            <div className="tilt-box flex flex-col items-center">
+              <strong className="mb-5 px-3">
+               <img src={webImage} alt="" className="h-[50px] m-10" /> <br />
+               
+              Web<br /> Developer
+              </strong>
+            </div>
           </div>
-        </section>
+          <div ref={glareRef} className="glare"></div>
+        </div>
       </div>
+
+{/* 2 */}
+<div ref={cardRef} className="tilt" data-aos="zoom-in">
+        <div className="container">
+          <div className="tilt-box-wrap">
+            {Array(9)
+              .fill(0)
+              .map((_, idx) => (
+                <span key={idx} className="t_over"></span>
+              ))}
+
+            <div className="tilt-box flex flex-col items-center">
+              <strong className="mb-5 px-3">
+               <img src={mobile} alt="" className="h-[50px] m-10" /> <br />
+               
+              Frontend<br /> Developer
+              </strong>
+            </div>
+          </div>
+          <div ref={glareRef} className="glare"></div>
+        </div>
+      </div>
+      {/* 3 */}
+      <div ref={cardRef} className="tilt" data-aos="zoom-in">
+        <div className="container">
+          <div className="tilt-box-wrap">
+            {Array(9)
+              .fill(0)
+              .map((_, idx) => (
+                <span key={idx} className="t_over"></span>
+              ))}
+
+            <div className="tilt-box flex flex-col items-center">
+              <strong className="mb-5 px-3">
+               <img src={backend} alt="" className="h-[50px] m-10" /> <br />
+               
+               Backend<br /> Developer
+              </strong>
+            </div>
+          </div>
+          <div ref={glareRef} className="glare"></div>
+        </div>
+      </div>
+      {/* 4 */}
+      <div ref={cardRef} className="tilt" data-aos="zoom-in">
+        <div className="container">
+          <div className="tilt-box-wrap">
+            {Array(9)
+              .fill(0)
+              .map((_, idx) => (
+                <span key={idx} className="t_over"></span>
+              ))}
+
+            <div className="tilt-box flex flex-col items-center">
+              <strong className="mb-5 px-3">
+               <img src={creator} alt="" className="h-[50px] m-10" /> <br />
+               
+              Content <br /> Creator
+              </strong>
+            </div>
+          </div>
+          <div ref={glareRef} className="glare"></div>
+        </div>
+      </div>
+     </div>
+
+<br />
     </div>
   );
 }
