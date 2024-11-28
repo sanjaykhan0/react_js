@@ -20,10 +20,10 @@ export default function App() {
           <Hero/>
         </div>
         <About/>
-        <Works/>
         
         <Tech/>
-        <Feedbacks/>
+        <Works/>
+        
         <div className='relative z-0'>
           <Contact/>
           <Stars/>

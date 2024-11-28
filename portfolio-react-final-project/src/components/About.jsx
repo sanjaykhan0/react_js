@@ -4,8 +4,8 @@ import webImage from "../assets/web.png";
 import mobile from "../assets/mobile.png";
 import backend from "../assets/backend.png";
 import creator from "../assets/creator.png";
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function About() {
   const styles = {
@@ -84,12 +84,13 @@ export default function About() {
   return (
     <div className="xl:px-60 px-20">
       <div
-        className={`intro  w-full flex flex-col items-start py-5 bg-primary mt-20 `} data-aos="fade-right"
+        className={`intro  w-full flex flex-col items-start py-5 bg-primary mt-20 `}
+        data-aos="fade-right"
       >
         <font className="text-secondary">introduction</font>
         <h1 className="text-white text-[40px] font-bold">Overview</h1>
         <br />
-        <p className="w-2/3 text-secondary ">
+        <p className="w-4/5 lg:w-2/3  text-secondary ">
           As a Full Stack Developer, I create responsive web applications using
           React.js for front-end and add more functionality like a
           GSAP,Lenis,Framework etc. and Node.js, Express, MongoDB for back-end
@@ -99,94 +100,93 @@ export default function About() {
       </div>
 
       {/* card */}
-     <div className="main-3d flex justify-start gap-16 flex-wrap ">
-     <div ref={cardRef} className="tilt" data-aos="zoom-in">
-        <div className="container">
-          <div className="tilt-box-wrap">
-            {Array(9)
-              .fill(0)
-              .map((_, idx) => (
-                <span key={idx} className="t_over"></span>
-              ))}
+      <div className="main-3d flex lg:justify-start sm:justify-center gap-5 sm:gap-16 flex-wrap ">
+        <div ref={cardRef} className="tilt" data-aos="zoom-in">
+          <div className="container">
+            <div className="tilt-box-wrap">
+              {Array(9)
+                .fill(0)
+                .map((_, idx) => (
+                  <span key={idx} className="t_over"></span>
+                ))}
 
-            <div className="tilt-box flex flex-col items-center">
-              <strong className="mb-5 px-3">
-               <img src={webImage} alt="" className="h-[50px] m-10" /> <br />
-               
-              Web<br /> Developer
-              </strong>
+              <div className="tilt-box flex flex-col items-center">
+                <strong className="mb-5 px-3">
+                  <img src={webImage} alt="" className="h-[50px]  m-10" /> <br />
+                  Web
+                  <br /> Developer
+                </strong>
+              </div>
             </div>
+            <div ref={glareRef} className="glare"></div>
           </div>
-          <div ref={glareRef} className="glare"></div>
+        </div>
+
+        {/* 2 */}
+        <div ref={cardRef} className="tilt" data-aos="zoom-in">
+          <div className="container">
+            <div className="tilt-box-wrap">
+              {Array(9)
+                .fill(0)
+                .map((_, idx) => (
+                  <span key={idx} className="t_over"></span>
+                ))}
+
+              <div className="tilt-box flex flex-col items-center">
+                <strong className="mb-5 px-3">
+                  <img src={mobile} alt="" className="h-[50px] m-10" /> <br />
+                  Frontend
+                  <br /> Developer
+                </strong>
+              </div>
+            </div>
+            <div ref={glareRef} className="glare"></div>
+          </div>
+        </div>
+        {/* 3 */}
+        <div ref={cardRef} className="tilt" data-aos="zoom-in">
+          <div className="container">
+            <div className="tilt-box-wrap">
+              {Array(9)
+                .fill(0)
+                .map((_, idx) => (
+                  <span key={idx} className="t_over"></span>
+                ))}
+
+              <div className="tilt-box flex flex-col items-center">
+                <strong className="mb-5 px-3">
+                  <img src={backend} alt="" className="h-[50px] m-10" /> <br />
+                  Backend
+                  <br /> Developer
+                </strong>
+              </div>
+            </div>
+            <div ref={glareRef} className="glare"></div>
+          </div>
+        </div>
+        {/* 4 */}
+        <div ref={cardRef} className="tilt" data-aos="zoom-in">
+          <div className="container">
+            <div className="tilt-box-wrap">
+              {Array(9)
+                .fill(0)
+                .map((_, idx) => (
+                  <span key={idx} className="t_over"></span>
+                ))}
+
+              <div className="tilt-box flex flex-col items-center">
+                <strong className="mb-5 px-3">
+                  <img src={creator} alt="" className="h-[50px] m-10" /> <br />
+                  Content <br /> Creator
+                </strong>
+              </div>
+            </div>
+            <div ref={glareRef} className="glare"></div>
+          </div>
         </div>
       </div>
 
-{/* 2 */}
-<div ref={cardRef} className="tilt" data-aos="zoom-in">
-        <div className="container">
-          <div className="tilt-box-wrap">
-            {Array(9)
-              .fill(0)
-              .map((_, idx) => (
-                <span key={idx} className="t_over"></span>
-              ))}
-
-            <div className="tilt-box flex flex-col items-center">
-              <strong className="mb-5 px-3">
-               <img src={mobile} alt="" className="h-[50px] m-10" /> <br />
-               
-              Frontend<br /> Developer
-              </strong>
-            </div>
-          </div>
-          <div ref={glareRef} className="glare"></div>
-        </div>
-      </div>
-      {/* 3 */}
-      <div ref={cardRef} className="tilt" data-aos="zoom-in">
-        <div className="container">
-          <div className="tilt-box-wrap">
-            {Array(9)
-              .fill(0)
-              .map((_, idx) => (
-                <span key={idx} className="t_over"></span>
-              ))}
-
-            <div className="tilt-box flex flex-col items-center">
-              <strong className="mb-5 px-3">
-               <img src={backend} alt="" className="h-[50px] m-10" /> <br />
-               
-               Backend<br /> Developer
-              </strong>
-            </div>
-          </div>
-          <div ref={glareRef} className="glare"></div>
-        </div>
-      </div>
-      {/* 4 */}
-      <div ref={cardRef} className="tilt" data-aos="zoom-in">
-        <div className="container">
-          <div className="tilt-box-wrap">
-            {Array(9)
-              .fill(0)
-              .map((_, idx) => (
-                <span key={idx} className="t_over"></span>
-              ))}
-
-            <div className="tilt-box flex flex-col items-center">
-              <strong className="mb-5 px-3">
-               <img src={creator} alt="" className="h-[50px] m-10" /> <br />
-               
-              Content <br /> Creator
-              </strong>
-            </div>
-          </div>
-          <div ref={glareRef} className="glare"></div>
-        </div>
-      </div>
-     </div>
-
-<br />
+      <br />
     </div>
   );
 }

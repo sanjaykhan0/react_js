@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Search</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            width: 65%;
+            height: 80vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZR-ijXa5qXW6yWMpALwy5ihdPXlHlnpiyt5sulTt9DgqZxo3TQ8ipv_oRlEYKSHd92ZE&usqp=CAU');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 50px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .first {
+            height: 100px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #area {
+            color: white;
+            font-size: 40px;
+        }
+
+        i {
+            font-size: 40px;
+            color: rgb(36, 131, 169);
+        }
+
+        .temp_c {
+            height: 100px;
+            width: 150px;
+            background-color: rgba(240, 248, 255, 0.391);
+            text-align: center;
+            padding-top: 10px;
+            border-radius: 8px;
+            color: white;
+            font-size: 27px;
+        }
+
+        .second {
+            height: 40%;
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+
+        }
+
+        .day {
+            height: 100px;
+            width: 150px;
+            text-align: center;
+            padding-top: 10px;
+            border-radius: 8px;
+            color: white;
+            font-size: 50px;
+        }
+
+        #area1,
+        #area2,
+        #area3 {
+            color: white;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .end {
+            height: 300px;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .temp_c1,
+        .temp_c2,
+        .temp_c3,
+        .temp_c4,
+        .temp_c5,
+        .temp_c6,
+        .temp_c7 {
+            height: 100%;
+            width: 20%;
+            background-color: rgba(240, 248, 255, 0.391);
+            text-align: center;
+            padding-top: 10px;
+            border-radius: 8px;
+            color: white;
+            font-size: 27px;
+        }
+
+        .mini1 {
+            height: 100%;
+            width: 40%;
+        }
+
+        .mini2 {
+            height: 100%;
+            width: 60%;
+            background-image: url('https://img.clipart-library.com/2/clip-partly-cloudy/clip-partly-cloudy-6.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 400px;
+        }
+
+        .temp_c11 {
+            height: 100%;
+            width: 20%;
+            background-color: rgba(240, 248, 255, 0.391);
+            text-align: center;
+            padding-top: 10px;
+            border-radius: 8px;
+            color: white;
+            font-size: 27px;
+        }
+
+        .day1 {
+            height: 40px;
+            width: 150px;
+            text-align: center;
+            padding-top: 10px;
+            border-radius: 8px;
+            color: white;
+            font-size: 30px;
+        }
+
+        .deg {
+            height: 30px;
+            width: 150px;
+            text-align: center;
+            border-radius: 8px;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+        #area11_1,
+        #area21_1 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        #area11_1>i,
+        #area21_1>i {
+            font-size: 20px;
+            color: rgb(36, 131, 169);
+        }
+
+        .cloud {
+            height: 100px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <input type="text" id="city-input" placeholder="Enter city">
+    <button id="btn">Search</button>
+    <div class="main">
+        <div class="first">
+            <div id="area">
+                <i class="fa-solid fa-location-dot"></i>
+                <span id="city">Enter a city</span>
+            </div>
+            <div class="temp_c" id="temp_c">Temperature: N/A</div>
+        </div>
+
+        <div class="second">
+            <div class="mini1">
+                <div class="day" id="day">Day:</div>
+                <div id="area1">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span id="water">Humidity: N/A</span>
+                </div>
+                <div id="area2">
+                    <i class="fa-solid fa-wind"></i>
+                    <span id="wind">Wind: N/A</span>
+                </div>
+                <div id="area3">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="time">Pressure: N/A</span>
+                </div>
+            </div>
+            <div class="mini2"></div>
+        </div>
+
+        <div class="end">
+            <div class="temp_c1" id="temp_c1_1">
+                <div class="day1" id="sunday">Sunday</div>
+                <div class="cloud" id="cloud1_1"></div>
+                <div class="deg" id="deg1">Temperature: N/A</div>
+                <div id="area11_1">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span id="water1_1">Humidity: N/A</span>
+                </div>
+                <div id="area21_1">
+                    <i class="fa-solid fa-wind"></i>
+                    <span id="wind1_1">Wind: N/A</span>
+                </div>
+            </div>
+            <div class="temp_c1" id="temp_c1_2">
+                <div class="day1" id="monday">Monday</div>
+                <div class="cloud" id="cloud1_2"></div>
+                <div class="deg" id="deg2">Temperature: N/A</div>
+                <div id="area11_1">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span id="water1_2">Humidity: N/A</span>
+                </div>
+                <div id="area21_1">
+                    <i class="fa-solid fa-wind"></i>
+                    <span id="wind1_2">Wind: N/A</span>
+                </div>
+            </div>
+            <div class="temp_c1" id="temp_c1_1">
+                <div class="day1" id="Tuesday ">Tuesday</div>
+                <div class="cloud" id="cloud1_3"></div>
+                <div class="deg" id="deg3">Temperature: N/A</div>
+                <div id="area11_1">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span id="water1_3">Humidity: N/A</span>
+                </div>
+                <div id="area21_1">
+                    <i class="fa-solid fa-wind"></i>
+                    <span id="wind1_3">Wind: N/A</span>
+                </div>
+            </div>
+            <div class="temp_c1" id="temp_c1_1">
+                <div class="day1" id="Wednesday ">Wednesday</div>
+                <div class="cloud" id="cloud1_4"></div>
+                <div class="deg" id="deg4">Temperature: N/A</div>
+                <div id="area11_1">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span id="water1_4">Humidity: N/A</span>
+                </div>
+                <div id="area21_1">
+                    <i class="fa-solid fa-wind"></i>
+                    <span id="wind1_4">Wind: N/A</span>
+                </div>
+            </div>
+            <div class="temp_c1" id="temp_c1_1">
+                <div class="day1" id="Thursday ">Thursday</div>
+                <div class="cloud" id="cloud1_5"></div>
+                <div class="deg" id="deg5">Temperature: N/A</div>
+                <div id="area11_1">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span id="water1_5">Humidity: N/A</span>
+                </div>
+                <div id="area21_1">
+                    <i class="fa-solid fa-wind"></i>
+                    <span id="wind1_5">Wind: N/A</span>
+                </div>
+            </div>
+            <div class="temp_c1" id="temp_c1_1">
+                <div class="day1" id="Friday ">Friday</div>
+                <div class="cloud" id="cloud1_6"></div>
+                <div class="deg" id="deg6">Temperature: N/A</div>
+                <div id="area11_1">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span id="water1_6">Humidity: N/A</span>
+                </div>
+                <div id="area21_1">
+                    <i class="fa-solid fa-wind"></i>
+                    <span id="wind1_6">Wind: N/A</span>
+                </div>
+            </div>
+            <div class="temp_c1" id="temp_c1_1">
+
+                <div class="day1" id="Saturday">Saturday</div>
+                <div class="cloud" id="cloud1_7"></div>
+                <div class="deg" id="deg7">Temperature: N/A</div>
+                <div id="area11_1">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span id="water1_7">Humidity: N/A</span>
+                </div>
+                <div id="area21_1">
+                    <i class="fa-solid fa-wind"></i>
+                    <span id="wind1_7">Wind: N/A</span>
+                </div>
+            </div>
+            <!-- Repeat for other forecast blocks, but with unique IDs -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("btn").addEventListener("click", () => {
+            let value = document.getElementById("city-input").value;
+            let url = `https://api.weatherapi.com/v1/current.json?key=fc14d133f166489a89c90445243007&q=${value}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(json => {
+                    console.log(json);
+                    displayData(json);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+
+        function displayData(data) {
+            let cityElement = document.getElementById("city");
+            let tempElement = document.getElementById("temp_c");
+            let dayElement = document.getElementById("day");
+            let waterElement = document.getElementById("water");
+            let windElement = document.getElementById("wind");
+            let pressureElement = document.getElementById("time");
+            let waterElement1 = document.getElementById("water1_1");
+            let windElement1 = document.getElementById("wind1_1");
+            let dayElement1 = document.getElementById("day1_1");
+            let cloud = document.getElementById("cloud1_1");
+            let tempElement1 = document.getElementById("deg1");
+            let tempElement2 = document.getElementById("deg2");
+            let tempElement3 = document.getElementById("deg3");
+            let tempElement4 = document.getElementById("deg4");
+            let tempElement5 = document.getElementById("deg5");
+            let tempElement6 = document.getElementById("deg6");
+            let tempElement7 = document.getElementById("deg7");
+
+            let waterElement2 = document.getElementById("water1_2");
+            let windElement2 = document.getElementById("wind1_2");
+            let waterElement3 = document.getElementById("water1_3");
+            let windElement3 = document.getElementById("wind1_3");
+            let waterElement4 = document.getElementById("water1_4");
+            let windElement4 = document.getElementById("wind1_4");
+            let waterElement5 = document.getElementById("water1_5");
+            let windElement5 = document.getElementById("wind1_5");
+            let waterElement6 = document.getElementById("water1_6");
+            let windElement6 = document.getElementById("wind1_6");
+            let waterElement7 = document.getElementById("water1_7");
+            let windElement7 = document.getElementById("wind1_7");
+
+            let cloud2 = document.getElementById("cloud1_2");
+            let cloud3 = document.getElementById("cloud1_3");
+            let cloud4 = document.getElementById("cloud1_4");
+            let cloud5 = document.getElementById("cloud1_5");
+            let cloud6 = document.getElementById("cloud1_6");
+            let cloud7 = document.getElementById("cloud1_7");
+
+            // Clear previous cloud image
+            cloud.innerHTML = '';
+            cloud2.innerHTML = '';
+            cloud3.innerHTML = '';
+            cloud4.innerHTML = '';
+            cloud5.innerHTML = '';
+            cloud6.innerHTML = '';
+            cloud7.innerHTML = '';
+            
+
+            let img = document.createElement("img");
+            img.src = data.current.condition.icon;
+            img.alt = data.current.condition.text;
+            img.style.width = '100px';  // Adjust size as needed
+            cloud.append(img);
+
+            
+            let img2 = document.createElement("img");
+            img2.src = "https://cdn.weatherapi.com/weather/64x64/day/116.png";
+            img2.alt = data.current.condition.text;
+            img2.style.width = '100px';  // Adjust size as needed
+            cloud2.append(img2);
+            
+            let img3 = document.createElement("img");
+            img3.src = "https://cdn.weatherapi.com/weather/64x64/day/176.png";
+            img3.alt = data.current.condition.text;
+            img3.style.width = '100px';  // Adjust size as needed
+            cloud3.append(img3);
+            
+            let img4 = document.createElement("img");
+            img4.src = "https://cdn.weatherapi.com/weather/64x64/day/293.png"
+            img4.alt = data.current.condition.text;
+            img4.style.width = '100px';  // Adjust size as needed
+            cloud4.append(img4);
+            
+            let img5 = document.createElement("img");
+            img5.src ="https://cdn.weatherapi.com/weather/64x64/day/116.png"
+            img5.alt = data.current.condition.text;
+            img5.style.width = '100px';  // Adjust size as needed
+            cloud5.append(img5);
+            
+            let img6 = document.createElement("img");
+            img6.src ="https://cdn.weatherapi.com/weather/64x64/day/119.png"
+            img6.alt = data.current.condition.text;
+            img6.style.width = '100px';  // Adjust size as needed
+            cloud6.append(img6);
+            
+            let img7 = document.createElement("img");
+            img7.src = "https://cdn.weatherapi.com/weather/64x64/day/176.png"
+            img7.alt = data.current.condition.text;
+            img7.style.width = '100px';  // Adjust size as needed
+            cloud7.append(img7);
+            
+          
+            // Update city name
+            cityElement.textContent = data.location.name;
+
+            // Update temperature
+            tempElement.textContent = `Temperature: ${data.current.temp_c}°C`;
+            tempElement1.textContent = `Temperature: ${data.current.temp_c}°C`;
+            tempElement2.textContent = `Temperature: ${data.current.temp_c +3}°C`;
+            tempElement3.textContent = `Temperature: ${data.current.temp_c +2}°C`;
+            tempElement4.textContent = `Temperature: ${data.current.temp_c +9}°C`;
+            tempElement5.textContent = `Temperature: ${data.current.temp_c +7}°C`;
+            tempElement6.textContent = `Temperature: ${data.current.temp_c +4}°C`;
+            tempElement7.textContent = `Temperature: ${data.current.temp_c +2}°C`;
+
+
+            // Update humidity, wind, and pressure
+            waterElement.textContent = `Humidity: ${data.current.humidity}%`;
+            windElement.textContent = `Wind: ${data.current.wind_mph} mph`;
+            pressureElement.textContent = `Pressure: ${data.current.pressure_mb} hPa`;
+            waterElement1.textContent = `Humidity: ${data.current.humidity}%`;
+            windElement1.textContent = `Wind: ${data.current.wind_mph} mph`;
+
+            waterElement2.textContent = `Humidity: ${data.current.humidity-3}%`;
+            windElement2.textContent = `Wind: ${data.current.wind_mph+8} mph`;
+            waterElement3.textContent = `Humidity: ${data.current.humidity-5}%`;
+            windElement3.textContent = `Wind: ${data.current.wind_mph+4} mph`;
+            waterElement4.textContent = `Humidity: ${data.current.humidity-8}%`;
+            windElement4.textContent = `Wind: ${data.current.wind_mph + 6} mph`;
+            waterElement5.textContent = `Humidity: ${data.current.humidity-10}%`;
+            windElement5.textContent = `Wind: ${data.current.wind_mph+3} mph`;
+            waterElement6.textContent = `Humidity: ${data.current.humidity-12}%`;
+            windElement6.textContent = `Wind: ${data.current.wind_mph+1} mph`;
+            waterElement7.textContent = `Humidity: ${data.current.humidity-15}%`;
+            windElement7.textContent = `Wind: ${data.current.wind_mph+4} mph`;
+
+            // Update day of the week
+            let date = new Date(data.current.last_updated_epoch * 1000); // Convert epoch to milliseconds
+            let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            let dayName = daysOfWeek[date.getDay()];
+            dayElement.textContent = dayName;
+            dayElement1.textContent = dayName;
+        }
+    </script>
+</body>
+</html>

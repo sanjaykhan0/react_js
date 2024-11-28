@@ -65,7 +65,7 @@ export default function Navbar() {
                 active === link.title ? "text-white" : "text-secondary"
               }
                 hover:text-white transition duration-300 ease-in-out cursor-pointer  font-medium`}
-              onclick={() => setActive(link.title)}
+              onClick={() => setActive(link.title)}
             >
               <a href={`#${link.id}`}>{link.title}</a>
             </li>
@@ -90,7 +90,7 @@ export default function Navbar() {
                   className={`${
                     active === link.title ? "text-white" : "text-secondary"
                   }  hover:text-white font-poppins  font-medium cursor-pointer`}
-                  onclick={() => {setActive(link.title);
+                  onClick={() => {setActive(link.title);
                     setToggle(!toggle);
                   }}
                 >
