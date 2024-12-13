@@ -1,51 +1,53 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
+// Async thunk for fetching products
 export const fetchProducts = createAsyncThunk(
-  "products/fetchProducts",
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await axios.get("http://localhost:5000/products");
-      const cartResponse = await axios.get("http://localhost:5000/userItem");
-      return {
-        products: response.data,
-        cart: cartResponse.data,
-      };
-    } catch (error) {
-      return rejectWithValue(error.response ? error.response.data : error.message);
-    }
+  'products/fetchProducts',
+  async () => {
+    const response = await axios.get('http://localhost:5000/products');
+    return response.data;
+  }
+);
+
+// Async thunk for updating a product
+export const updateProduct = createAsyncThunk(
+  'products/updateProduct',
+  async (product) => {
+    const response = await axios.put(`http://localhost:5000/products/${product.id}`, product);
+    return response.data;
   }
 );
 
 const productsSlice = createSlice({
-  name: "products",
+  name: 'products',
   initialState: {
-    items: [],
-    cart: null, // Added this
-    loading: false,
+    data: [],
+    status: 'idle',
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.status = 'loading';
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.loading = false;
-        state.items = action.payload.products;
-        state.cart = action.payload.cart;
+        state.status = 'succeeded';
+        state.data = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        const index = state.data.findIndex((product) => product.id === action.payload.id);
+        if (index !== -1) {
+          state.data[index] = action.payload;
+        }
       });
   },
 });
 
-export const selectProducts = (state) => state.products.items;
-export const selectLoading = (state) => state.products.loading;
-export const selectError = (state) => state.products.error;
-
 export default productsSlice.reducer;
+

@@ -6,7 +6,7 @@
       "image": "https://example.com/image1.jpg",
       "description": "This is the description for product 1. It's a high-quality product.",
       "price": 29.99,
-      "quantityAvailable": 25,
+      "quantityAvailable": 23,
       "rating": 4.5
     },
     {
@@ -24,7 +24,7 @@
       "image": "https://example.com/image3.jpg",
       "description": "This is the description for product 3. It's a top-selling item.",
       "price": 19.99,
-      "quantityAvailable": 5,
+      "quantityAvailable": 4,
       "rating": 4.2
     },
     {
@@ -46,5 +46,36 @@
       "rating": 4.7
     }
   ],
-  "userItem": []
+  "userItem": [
+    {
+      "id": "1",
+      "title": "Product 1",
+      "image": "https://example.com/image1.jpg",
+      "description": "This is the description for product 1. It's a high-quality product.",
+      "price": 29.99,
+      "quantityAvailable": 25,
+      "rating": 4.5,
+      "AddedQuantity": 1
+    },
+    {
+      "id": "1",
+      "title": "Product 1",
+      "image": "https://example.com/image1.jpg",
+      "description": "This is the description for product 1. It's a high-quality product.",
+      "price": 29.99,
+      "quantityAvailable": 24,
+      "rating": 4.5,
+      "AddedQuantity": 1
+    },
+    {
+      "id": "3",
+      "title": "Product 3",
+      "image": "https://example.com/image3.jpg",
+      "description": "This is the description for product 3. It's a top-selling item.",
+      "price": 19.99,
+      "quantityAvailable": 5,
+      "rating": 4.2,
+      "AddedQuantity": 1
+    }
+  ]
 }
