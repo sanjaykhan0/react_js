@@ -1,0 +1,7 @@
+.card-side{
+    /* border-left: 5px solid green; */
+    border-bottom: 1px solid gray;
+}
+.sidebar {
+    scrollbar-width: none; 
+}
