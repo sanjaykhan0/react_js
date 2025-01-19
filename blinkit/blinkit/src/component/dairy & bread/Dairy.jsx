@@ -140,7 +140,7 @@ export default function Dairy() {
                   className="item-card p-4 border-b border-gray-200"
                 >
                   <h2 className="text-lg font-semibold">
-                    {item.title || "No Title"}
+                    {item.name || "No Title"}
                   </h2>
                   <p className="text-sm text-gray-600">
                     {item.description || "No Description Available"}

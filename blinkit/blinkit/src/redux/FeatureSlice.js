@@ -30,4 +30,4 @@ const featureSlice = createSlice({
     },
 });
 
-export default featureSlice.reducer;
+export default featureSlice.reducer
