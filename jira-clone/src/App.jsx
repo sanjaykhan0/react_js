@@ -1,28 +1,45 @@
 import { useState } from "react";
+// import { useDispatch } from "react-redux";
+// import { apifetch } from "./app/feature";
 
 export default function App() {
   const [activeBoard, setActiveBoard] = useState("kanban");
   const [kanbanStyle, setKanbanStyle] = useState({ display: "block" });
   const [projectStyle, setprojectStyle] = useState({ display: "none" });
 
-
   const [companyName, setCompanyName] = useState("singularity 1.0");
   const [profile, setProfile] = useState([]);
+  const [update, setupdate] = useState({ display: "none" });
+  const [view, setview] = useState({ display: "block" });
+  const [form, setform] = useState({ display: "none" });
+
+  const [name,setname] = useState("")
+  const [pass,setpass] = useState("")
+  console.log(name,pass + "check in app jsx line 18")
+
+  // const dispatch = useDispatch()
 
   const cardClasses = "bg-card p-4 rounded-lg shadow";
   const buttonClasses =
     "bg-secondary text-secondary-foreground hover:bg-secondary/80 p-2 rounded-md";
   const textClasses = "bg-white p-3 rounded-md mb-2 shadow";
 
-
-
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setProfile((prevProfile) => [...prevProfile, { companyName }]);
     console.log([...profile, { companyName }]); // For debugging
   };
+
+  const editform = () => {
+    setupdate({ display: "block" });
+    setview({ display: "none" });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+   
+  };
+  
 
   return (
     <div>
@@ -47,7 +64,7 @@ export default function App() {
             </h1>
           </div>
 
-          <div className="logo py-2 pl-2 flex items-center">
+          <div className="logo py-2 pl-2 flex items-center" onClick={()=>setform({display:"block",background:"rgba(0, 0, 0, 0.251)"})}>
             <img
               src="../public/Screenshot 2025-01-19 111134.png"
               className="h-[20px] w-[20px]"
@@ -64,7 +81,12 @@ export default function App() {
         <div className="logo h-[10%] w-[100%] flex items-center">
           <img src="../public/logo.png" className="h-11 w-11" alt="" />
           <div className="logo-name px-2">
-            <h3 className="font-bold text-gray-600">  {profile.length > 0 ? profile[profile.length - 1].companyName : "singularity 1.0" }</h3>
+            <h3 className="font-bold text-gray-600">
+              {" "}
+              {profile.length > 0
+                ? profile[profile.length - 1].companyName
+                : "singularity 1.0"}
+            </h3>
             <p className="text-[13px] font-semibold text-gray-500">
               Business project
             </p>
@@ -119,7 +141,7 @@ export default function App() {
         style={kanbanStyle}
       >
         <div className="kanban-board  w-[99%] h-[99vh] ">
-          <div className="p-4 bg-background">
+          <div className="p-4 bg-background" style={view}>
             <div className="flex   flex-col mb-4">
               <p className="text-gray-500 font-semibold px-8">
                 Project / singularity 1.0 / Kanban Board
@@ -139,7 +161,7 @@ export default function App() {
               <div className={`${cardClasses} bg-gray-50 px-8`}>
                 <h2 className="font-semibold">BACKLOG 4</h2>
                 <div className="mt-2">
-                  <div className={textClasses}>
+                  <div className={textClasses} onClick={editform}>
                     <p>hello</p>
                     <div className="flex justify-between mt-2">
                       <span>⬆️</span>
@@ -235,6 +257,10 @@ export default function App() {
               </div>
             </div>
           </div>
+          <div
+            className="editform w-[100%] h-[100%] bg-slate-400 "
+            style={update}
+          ></div>
         </div>
       </div>
 
@@ -268,6 +294,30 @@ export default function App() {
           </form>
         </div>
       </div>
+      {/* form  */}
+
+      <div className="form h-[100%] w-[100%]  absolute top-0 left-0  " style={form}>
+        <button onClick={()=>setform({display:"none"})}>back</button>
+
+
+              <form onSubmit={handleFormSubmit}>
+              <input
+  type="text"
+  placeholder="name"
+  onChange={(e) => setname(e.target.value)}
+/>
+<input
+  type="text"
+  placeholder="password"
+  onChange={(e) => setpass(e.target.value)}
+/>
+
+              
+                 <button type="submit">submit</button>
+              </form>
+
+      </div>
+      {/* form end  */}
     </div>
   );
 }
